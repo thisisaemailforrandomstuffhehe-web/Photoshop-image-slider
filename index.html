@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Image Comparison Slider</title>
+
+<style>
+  .container {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    overflow: hidden;
+  }
+
+  .container img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .top-image {
+    width: 50%; /* starting reveal amount */
+    overflow: hidden;
+  }
+
+  .slider {
+    width: 600px;
+    margin-top: 10px;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <!-- bottom image -->
+  <img src="bottom.png" alt="Bottom Image">
+
+  <!-- top image wrapper -->
+  <div class="top-image" id="topImage">
+    <img src="top.png" alt="Top Image">
+  </div>
+</div>
+
+<input
+  type="range"
+  min="0"
+  max="100"
+  value="50"
+  class="slider"
+  id="slider">
+
+<script>
+  const slider = document.getElementById("slider");
+  const topImage = document.getElementById("topImage");
+
+  slider.addEventListener("input", function () {
+    topImage.style.width = this.value + "%";
+  });
+</script>
+
+</body>
+</html>
