@@ -4,56 +4,44 @@
 <style>
 .container {
   position: relative;
-  width: 100%;
-  max-width: 800px;
-  aspect-ratio: 16 / 9; /* keeps image proportions */
+  width: 600px;
+  height: 400px;
   overflow: hidden;
 }
 
-.container img {
+.bottom, .top {
   position: absolute;
   width: 100%;
   height: 100%;
-  object-fit: contain; /* keeps full image visible */
+  object-fit: cover;
 }
 
-.top {
+.top-wrapper {
+  position: absolute;
   width: 50%;
-  overflow: hidden;
-  position: absolute;
   height: 100%;
-}
-
-.slider {
-  width: 100%;
-  max-width: 800px;
-  margin-top: 10px;
+  overflow: hidden;
 }
 </style>
 </head>
-
 <body>
 
 <div class="container">
+  <img class="bottom" src="bottom.jpg">
 
-  <!-- bottom image -->
-  <img src="https://raw.githubusercontent.com/thisisaemailforrandomstuffhehe-web/Photoshop-image-slider/main/bottom.png">
-
-  <!-- top image -->
-  <div class="top" id="top">
-    <img src="https://raw.githubusercontent.com/thisisaemailforrandomstuffhehe-web/Photoshop-image-slider/main/top.png">
+  <div class="top-wrapper" id="topWrap">
+    <img class="top" src="top.jpg">
   </div>
-
 </div>
 
-<input type="range" min="0" max="100" value="50" class="slider" id="slider">
+<input type="range" min="0" max="100" value="50" id="slider">
 
 <script>
 const slider = document.getElementById("slider");
-const topDiv = document.getElementById("top");
+const topWrap = document.getElementById("topWrap");
 
 slider.oninput = () => {
-  topDiv.style.width = slider.value + "%";
+  topWrap.style.width = slider.value + "%";
 };
 </script>
 
